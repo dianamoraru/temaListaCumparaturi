@@ -14,6 +14,10 @@ shoppingApp.config(['$routeProvider',
         templateUrl: 'partials/products-list.html',
         controller: 'ProductController'
       }).
+      when('/adauga', {
+        templateUrl: 'partials/adauga-produs.html',
+        controller: 'ProductController'
+      }).
       otherwise({
         redirectTo: '/products'
       });
