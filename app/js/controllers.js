@@ -12,9 +12,12 @@ shoppingControllers.controller('ListController', function($scope) {
 
 });
 shoppingControllers.controller('ProductController', function($scope) {
-   $scope.products = ['P1','P2'];
+    $http.get('connect.php').success(function(data) {
+   			$scope.products = data;
+   		  });
    $scope.addProduct=function(){
 	 $scope.products.push($scope.newProduct);
+	 // products.save();
    }
 });
 // {'name':'P1','description':'D1'},{'name':'P2','description':'D2'}
