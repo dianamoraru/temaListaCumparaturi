@@ -12,7 +12,9 @@ shoppingControllers.controller('ListController', function($scope) {
 
 });
 shoppingControllers.controller('ProductController', function($scope) {
-   $scope.products = [{'name':'P1','list':'L1'},{'name':'P2','list':'L2'}];
+   $scope.products = ['P1','P2'];
+   $scope.addProduct=function(){
+	 $scope.products.push($scope.newProduct);
+   }
 });
-
-
+// {'name':'P1','description':'D1'},{'name':'P2','description':'D2'}

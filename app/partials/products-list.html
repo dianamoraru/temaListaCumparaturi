@@ -17,7 +17,10 @@
       <br>
 
       <div ng-controller="ProductController">
-        <li ng-repeat="product in products ">{{product.name}}</li>
+        <li ng-repeat="product in products ">{{product}}</li>
+        <br>
+        <select ng-model="selectedList" ng-options="product for product in products">
       </div>
+
     </div>
   </div>
