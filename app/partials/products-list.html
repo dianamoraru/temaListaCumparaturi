@@ -8,17 +8,24 @@
     <input type="text" ng-model="newList">
     <button ng-click="addList()">Adauga</button>
   </div> -->
-  <div>
+  <div class="adaugare">
     Adauga produs: 
     <button onclick="window.location.href='#/adauga'">+</button>
   </div>
     <br>
-    <div>
-      <li ng-repeat="product in products">
-          <input class="messageCheckbox" type="checkbox" value=false>
-            {{product.name}} {{product.description}}
-          <button ng-click="editProduct(product.id)">Modifica</button>
-      </li>
-      <br>
+  <div class="lista">
+    Search: <input ng-model="query"><br>
+    <li class="produse" ng-repeat="product in products | filter:query">
+        <input class="messageCheckbox" type="checkbox" ng-model="product.checked" ng-click="checkedIndex(product)">
+          {{product.id}} {{product.name}} {{product.description}} {{product.checked}}
+        <button ng-click="editProduct(product.id)">Modifica</button>
+    </li>
+  
+    <br>
+    <br>
+    <div class="buton_sterge">
+      <button ng-click="removeProduct()">Sterge</button>
     </div>
+  </div>
+
 </div>
