@@ -1,18 +1,12 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
+#adauga_produs{
 
-.produse {
+  padding: 10px;
+  background-color: rgb(100,200,100);
+}
+li {
   clear: both;
-  height: 10px;
-  padding-top: 25px;
-   float: left;
-  margin: -1em 1em 1.5em 0em;
-  padding-bottom: 1em;
-  /*width: 100px;*/
+  height: 100px;
+  padding-top: 15px;
 }

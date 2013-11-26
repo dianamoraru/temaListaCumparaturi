@@ -1,18 +1,63 @@
 <!doctype html>
-<html lang="en" ng-app="shoppingApp">
+<html lang="en" ng-app="shoppingControllers">
 <head>
   <meta charset="utf-8">
   <title>Lista Cumparaturi</title>
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
+ 
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body  ng-controller="ProductController"  >
+  <div id="liste" ng-controller="ListController">
+    Selecteaza lista: 
+    <select ng-model="newProduct.list" ng-options="list for list in lists">
+    </select>
+    <br>
+    Adauga lista:
+    <input type="text" ng-model="newList"><br>
+    <button ng-click="addList()">Adauga Lista</button>
+  </div>
+  <div>  
+    <div id="adaugareProd" >
+      <p>Adauga produs:</p>
+      Nume:
+      <input type="text" ng-model="newProduct.name"><br>
+      Descriere:
+      <input type="text" ng-model="newProduct.description"><br>
+      <br>
+        <!-- Descriere: -->
+        <!-- <input type="text" ng-model="newDescription"> -->
+      <button ng-click="addProduct()">Adauga</button>
+      <br>
+    </div>
+    <div id="produse">
+      Search: <input ng-model="query"><br>
+      <li class="produse" ng-repeat="product in products | filter:query">
+          <input class="messageCheckbox" type="checkbox" ng-model="product.checked">
+            {{product.id}} {{product.name}} {{product.description}} {{product.checked}} {{product.list}}
+          <button ng-click="editProduct(product.id)">Modifica</button>
+      </li>
+    </div>
+    <br>
+    <br>
+    <div class="buton_sterge">
+      <button ng-click="removeProduct()">Sterge</button>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
-</head>
-<body>
-
-  <div ng-view></div>
-
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
 </body>
 </html>
