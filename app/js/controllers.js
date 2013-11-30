@@ -4,7 +4,7 @@ var uid = 0;
 shoppingControllers.controller('ListController', function($scope) {
    $scope.lists = [];
    $scope.addList=function(){
-	 $scope.lists.push($scope.newList);
+         $scope.lists.push($scope.newList);
    $scope.lists = productFactory.getLists();
 
    }
@@ -33,16 +33,16 @@ shoppingControllers.factory('listFactory',function(){
 
 shoppingControllers.controller('ProductController', function($window,$scope,productFactory) {
   $scope.addProduct=function(){
-    if($scope.newProduct.name===null){
-       $window.alert('Numele produsului este obligatoriu!');      
+    if($scope.newProduct.name==null){
+       $window.alert('Numele produsului este obligatoriu!');
     }else{
-      if($scope.newProduct.id===null){
+      if($scope.newProduct.id==null){
         $scope.newProduct.checked=false;
         $scope.newProduct.id=uid++;
         $scope.products.push($scope.newProduct);
       }else{
         for(i in $scope.products){
-          if($scope.products[i].id===$scope.newProduct.id){
+          if($scope.products[i].id==$scope.newProduct.id){
             $scope.products[i]=$scope.newProduct;
           };
         };
