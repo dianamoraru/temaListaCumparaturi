@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body  ng-controller="ProductController"  >
-  <div id="liste" ng-controller="ListController">
+  <div id="liste">
     Selecteaza lista: 
-    <select ng-model="newProduct.list" ng-options="list for list in lists">
+    <select ng-model="newProduct.list"ng-init="newProduct.list='Lista1'" ng-options="list for list in lists">
     </select>
     <br>
     Adauga lista:
@@ -19,36 +19,39 @@
   </div>
   <div> 
     <div> 
-    Adauga produs:
-    <button ng-click="displayAddProduct=!displayAddProduct">+</button> 
-    <br>
-    <br>
+      Adauga produs:
+      <button ng-click="displayAddProduct=!displayAddProduct">+</button> 
+      <br>
+      <br>
     </div>
     <div id="adaugareProd" ng-show="displayAddProduct">  
-      Nume:<br>
-      <input type="text" ng-model="newProduct.name" ng-disabled=false><br>
-      Descriere:<br>
-      <input type="text" ng-model="newProduct.description" ng-disabled=false><br>
-      Categorie:<br>
-       <select ng-model="newProduct.category" ng-options="category for category in categories">
-    </select><br>
+      Nume:
+      <input type="text" ng-model="newProduct.name" ng-disabled=false>
+      Descriere:
+      <input type="text" ng-model="newProduct.description" ng-disabled=false>
+      Categorie:
+      <select ng-model="newProduct.category"ng-init="newProduct.category='Alimentare'" ng-options="category for category in categories">
+      </select>
+      <br><br>
 
       <button ng-click="addProduct()">Adauga</button>
       <br>
       <br>
       <br>
     </div>
-    <div id="produse">
-     
-      Search: <input ng-model="query"><br>
+    <div id="produse">  
+      Cauta in lista de produse: <input ng-model="query"><br>
       Sorteaza dupa:
-      <select ng-model="orderProp">
+      <select ng-model="orderProp" ng-init="orderProp='category'">
         <option value="name">Numele Produsului</option>
         <option value="category">Categorie</option>
       </select>
-      <li class="produse" ng-repeat="product in products |filter:query | orderBy:orderProp">
+      Afiseaza doar produsele din categoria:
+       <select ng-model="categoryfilter"ng-init="newProduct.category='Alimentare'" ng-options="category for category in categories"><option value="">Toate</option>
+        </select>
+      <li class="produse" ng-repeat="product in products |filter:query |filter:newProduct.list:true|filter:categoryfilter:true| orderBy:orderProp">
         <input class="messageCheckbox" type="checkbox" ng-model="product.checked">
-          {{product.name}} {{product.description}} {{product.list}} {{product.category}}
+          {{product.name}} {{product.description}} {{product.category}}
         <button ng-click="editProduct(product.id)">Modifica</button>
       </li>
     </div>

@@ -1,18 +1,8 @@
 var shoppingControllers = angular.module('shoppingControllers', []);
 var uid = 0;
 
-shoppingControllers.controller('ListController', function($scope) {
-   $scope.lists = [];
-   $scope.addList=function(){
-         $scope.lists.push($scope.newList);
-   $scope.lists = productFactory.getLists();
-
-   }
-
-});
 shoppingControllers.factory('productFactory',function(){
   var products=[];
-  var newProduct=[];
   var factory={};
    factory.getProducts=function(){
     return products;
@@ -33,16 +23,16 @@ shoppingControllers.factory('categoriesFactory',function(){
 
 shoppingControllers.factory('listFactory',function(){
   var lists=[];
-  var factory2={};
+  var factory={};
    factory.getLists=function(){
     return lists;
   }
-  return factory2;
+  return factory;
 
 });
 
 
-shoppingControllers.controller('ProductController', function($window,$scope,productFactory,categoriesFactory) {
+shoppingControllers.controller('ProductController', function($window,$scope,productFactory,categoriesFactory,listFactory) {
   $scope.addProduct=function(){
     if($scope.newProduct.name==""||$scope.newProduct.name==null){
        $window.alert('Numele produsului este obligatoriu!');
@@ -58,13 +48,23 @@ shoppingControllers.controller('ProductController', function($window,$scope,prod
           };
         };
       };
+     var lista=$scope.newProduct.list;
      $scope.newProduct={};
+     $scope.newProduct.category='Alimentare';
+     $scope.newProduct.list=lista;
     }
   };
 
+  $scope.addList=function(){
+    $scope.lists.push($scope.newList);
+    $scope.newList='';
+    
+  };
+
+
   $scope.editProduct=function(id){
     for(i in $scope.products){
-      if ($scope.products[i].id===id) {
+      if ($scope.products[i].id==id) {
 
       $scope.newProduct=angular.copy($scope.products[i]);
       };
@@ -74,13 +74,13 @@ shoppingControllers.controller('ProductController', function($window,$scope,prod
 
     i=$scope.products.length;
     while(i--){
-      if ($scope.products[i].checked===true) {
+      if ($scope.products[i].checked==true) {
         $scope.products.splice(i, 1);
       }
     }
   };
 $scope.products = productFactory.getProducts();
 $scope.categories=categoriesFactory.getCategories();
-
+$scope.lists = listFactory.getLists();
   
 });
