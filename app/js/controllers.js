@@ -31,8 +31,11 @@ shoppingControllers.factory('listFactory',function(){
 });
 
 
-shoppingControllers.controller('ProductController', function($scope,productFactory) {
+shoppingControllers.controller('ProductController', function($window,$scope,productFactory) {
   $scope.addProduct=function(){
+    if($scope.newProduct.name==null){
+       $window.alert('Numele produsului este obligatoriu!');      
+    }else{
       if($scope.newProduct.id==null){
         $scope.newProduct.checked=false;
         $scope.newProduct.id=uid++;
@@ -45,6 +48,7 @@ shoppingControllers.controller('ProductController', function($scope,productFacto
         };
       };
      $scope.newProduct={};
+    }
   };
 
   $scope.editProduct=function(id){
