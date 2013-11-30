@@ -18,8 +18,19 @@ shoppingControllers.factory('productFactory',function(){
     return products;
   }
   return factory;
-
 });
+
+shoppingControllers.factory('categoriesFactory',function(){
+  
+   var categories=["Alimentare", "Nealimentare",
+   "Hrana Animale","Produse Copii","Electronice"];
+  var factory={};
+  factory.getCategories=function(){
+    return categories;
+  }
+  return factory;
+});
+
 shoppingControllers.factory('listFactory',function(){
   var lists=[];
   var factory2={};
@@ -31,9 +42,9 @@ shoppingControllers.factory('listFactory',function(){
 });
 
 
-shoppingControllers.controller('ProductController', function($window,$scope,productFactory) {
+shoppingControllers.controller('ProductController', function($window,$scope,productFactory,categoriesFactory) {
   $scope.addProduct=function(){
-    if($scope.newProduct.name==null){
+    if($scope.newProduct.name==""||$scope.newProduct.name==null){
        $window.alert('Numele produsului este obligatoriu!');
     }else{
       if($scope.newProduct.id==null){
@@ -69,6 +80,7 @@ shoppingControllers.controller('ProductController', function($window,$scope,prod
     }
   };
 $scope.products = productFactory.getProducts();
+$scope.categories=categoriesFactory.getCategories();
 
   
 });

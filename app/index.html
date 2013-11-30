@@ -15,6 +15,7 @@
     Adauga lista:
     <input type="text" ng-model="newList"><br>
     <button ng-click="addList()">Adauga Lista</button>
+    <br><br>
   </div>
   <div> 
     <div> 
@@ -24,24 +25,34 @@
     <br>
     </div>
     <div id="adaugareProd" ng-show="displayAddProduct">  
-      Nume:
+      Nume:<br>
       <input type="text" ng-model="newProduct.name" ng-disabled=false><br>
-      Descriere:
+      Descriere:<br>
       <input type="text" ng-model="newProduct.description" ng-disabled=false><br>
-      <br>
+      Categorie:<br>
+       <select ng-model="newProduct.category" ng-options="category for category in categories">
+    </select><br>
+
       <button ng-click="addProduct()">Adauga</button>
       <br>
       <br>
       <br>
     </div>
     <div id="produse">
+     
       Search: <input ng-model="query"><br>
-      <li class="produse" ng-repeat="product in products | filter:query">
+      Sorteaza dupa:
+      <select ng-model="orderProp">
+        <option value="name">Numele Produsului</option>
+        <option value="category">Categorie</option>
+      </select>
+      <li class="produse" ng-repeat="product in products |filter:query | orderBy:orderProp">
         <input class="messageCheckbox" type="checkbox" ng-model="product.checked">
-          {{product.id}} {{product.name}} {{product.description}} {{product.checked}} {{product.list}}
+          {{product.name}} {{product.description}} {{product.list}} {{product.category}}
         <button ng-click="editProduct(product.id)">Modifica</button>
       </li>
     </div>
+    
     <br>
     <br>
     <div class="buton_sterge">
