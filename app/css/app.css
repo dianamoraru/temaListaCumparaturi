@@ -1,12 +1,43 @@
 /* app css stylesheet */
 
+body{
+    background-image: url(paper.jpg );
+	/*background-color: rgb(70,5,70);*/
+	color: rgb(90,45,0);
+	font: bold 15px/30px Arial;
+}
+
 #adauga_produs{
 
   padding: 10px;
   background-color: rgb(100,200,100);
 }
+
+.butoane{
+	font: bold 15px/18px Arial;
+	background-color: rgb(250,155,50);
+
+
+}
 li {
   clear: both;
-  height: 100px;
+  height: 15px;
   padding-top: 15px;
+  padding-right:400px;
+  padding-left: 150px;
+  font:italic bold 15px/30px Georgia, serif;
+
 }
+.caseteText{
+	background-color: rgb(240,230,175);
+	color: rgb(90,45,0);
+	font:italic 15px/30px Arial;
+}
+
+
+#butonModif{
+
+	height: 30px; 
+    width: 32px; 
+    background-color: rgb(255,255,255);
+ }
