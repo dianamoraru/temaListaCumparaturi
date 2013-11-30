@@ -17,16 +17,19 @@
     <button ng-click="addList()">Adauga Lista</button>
   </div>
   <div>  
-    <div id="adaugareProd" >
-      <p>Adauga produs:</p>
+    Adauga produs:
+    <button ng-click="displayAddProduct=!displayAddProduct">+</button> 
+    <br>
+    <br>
+    <div id="adaugareProd" ng-show="displayAddProduct">  
       Nume:
       <input type="text" ng-model="newProduct.name"><br>
       Descriere:
       <input type="text" ng-model="newProduct.description"><br>
       <br>
-        <!-- Descriere: -->
-        <!-- <input type="text" ng-model="newDescription"> -->
       <button ng-click="addProduct()">Adauga</button>
+      <br>
+      <br>
       <br>
     </div>
     <div id="produse">
