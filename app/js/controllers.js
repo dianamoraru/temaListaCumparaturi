@@ -1,8 +1,18 @@
 var shoppingControllers = angular.module('shoppingControllers', []);
-var uid = 0;
+var uid = 6;
 
 shoppingControllers.factory('productFactory',function(){
-  var products=[];
+  var products=[
+  {'id':0,'list':'Lista1','checked':false,'name':'Lapte','description':'2 litri','category':'Alimentare'},
+  {'id':1,'list':'Lista1','checked':false,'name':'Ciocolata','description':'3 tablete','category':'Alimentare'},
+  {'id':2,'list':'Lista1','checked':false,'name':'Crema','description':'','category':'Nealimentare'},
+
+   {'id':3,'list':'Lista2','checked':false,'name':'Margarina','description':'','category':'Alimentare'},
+  {'id':4,'list':'Lista2','checked':false,'name':'Mancare pisica','description':'3 Kg','category':'Hrana Animale'},
+  {'id':5,'list':'Lista2','checked':false,'name':'Uscator par','description':'','category':'Electronice'}
+
+
+  ];
   var factory={};
    factory.getProducts=function(){
     return products;
@@ -22,7 +32,7 @@ shoppingControllers.factory('categoriesFactory',function(){
 });
 
 shoppingControllers.factory('listFactory',function(){
-  var lists=[];
+  var lists=['Lista1','Lista2'];
   var factory={};
    factory.getLists=function(){
     return lists;
@@ -63,6 +73,7 @@ shoppingControllers.controller('ProductController', function($window,$scope,prod
 
 
   $scope.editProduct=function(id){
+    $scope.displayAddProduct=true;
     for(i in $scope.products){
       if ($scope.products[i].id==id) {
 

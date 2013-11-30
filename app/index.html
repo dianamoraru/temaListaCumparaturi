@@ -51,7 +51,7 @@
         </select>
       <li class="produse" ng-repeat="product in products |filter:query |filter:newProduct.list:true|filter:categoryfilter:true| orderBy:orderProp">
         <input class="messageCheckbox" type="checkbox" ng-model="product.checked">
-          {{product.name}} {{product.description}} {{product.category}}
+       {{product.name}} {{product.description}}, Categorie:{{product.category}}
         <button ng-click="editProduct(product.id)">Modifica</button>
       </li>
     </div>
